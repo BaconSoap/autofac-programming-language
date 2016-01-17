@@ -18,24 +18,33 @@ namespace AutofacProgrammingLanguage
 
         protected override void Load(ContainerBuilder builder)
         {
+            var assemblies = new[] { typeof(LanguageModule).Assembly, _executingAssembly };
+
             builder.RegisterType<ProgramState>().AsSelf().SingleInstance();
 
-            builder.RegisterAssemblyTypes(_executingAssembly, typeof(LanguageModule).Assembly)
-                .Where(t => t.GetInterfaces().Contains(typeof(ILiteralProvider)))
+            // literals
+
+            builder.RegisterAssemblyTypes(assemblies)
+                .Where(t => t.GetInterfaces().Contains(typeof (ILiteralProvider)))
                 .AsSelf()
                 .InstancePerDependency();
 
-            var genericCommandTypes = new[] {typeof (PrintLiteral<>)};
+            var genericCommandTypes = assemblies.SelectMany(a => a.GetTypes()
+                    .Where(t => t.IsGenericType && typeof (BaseCommand).IsAssignableFrom(t)));
+            var nonGenericCommandTypes = assemblies.SelectMany(a => a.GetTypes()
+                    .Where(t => !t.IsGenericType && typeof(BaseCommand).IsAssignableFrom(t)));
 
+            // generic commands
             foreach (var genericCommandType in genericCommandTypes)
             {
                 builder
                     .RegisterGeneric(genericCommandType)
-                    .As(genericCommandType).InstancePerDependency()
+                    .As(genericCommandType)
+                    .InstancePerDependency()
                     .OnActivated(activated => ((BaseCommand) activated.Instance).Execute());
             }
 
-            var nonGenericCommandTypes = new[] {typeof (ReadLine), typeof (PrintStackValue)};
+            // non-generic commands
             foreach (var nonGenericCommandType in nonGenericCommandTypes)
             {
                 builder
@@ -45,6 +54,26 @@ namespace AutofacProgrammingLanguage
                     .OnActivated(activated => ((BaseCommand) activated.Instance).Execute());
             }
 
+            var genericConditionTypes = assemblies.SelectMany(a => a.GetTypes()
+                .Where(t => t.IsGenericType && t.GetInterfaces().Contains(typeof(ICondition))));
+            var nonGenericConditionTypes = assemblies.SelectMany(a => a.GetTypes()
+                .Where(t => !t.IsGenericType && t.GetInterfaces().Contains(typeof(ICondition))));
+
+            foreach (var genericConditionType in genericConditionTypes)
+            {
+                builder
+                    .RegisterGeneric(genericConditionType)
+                    .As(genericConditionType)
+                    .InstancePerDependency();
+            }
+
+            foreach (var nonGenericConditionType in nonGenericConditionTypes)
+            {
+                builder
+                    .RegisterType(nonGenericConditionType)
+                    .As(nonGenericConditionType)
+                    .InstancePerDependency();
+            }
         }
     }
 }

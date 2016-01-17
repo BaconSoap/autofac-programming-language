@@ -53,8 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\If.cs" />
     <Compile Include="Commands\PrintStackValue.cs" />
+    <Compile Include="Commands\PushLiteral.cs" />
     <Compile Include="Commands\ReadLine.cs" />
+    <Compile Include="Conditions\Equals.cs" />
+    <Compile Include="Conditions\StackEquals.cs" />
     <Compile Include="LiteralProviders\ILiteralProvider.cs" />
     <Compile Include="LanguageModule.cs" />
     <Compile Include="Commands\PrintLiteral.cs" />
