@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutofacProgrammingLanguage.Commands;
+﻿using AutofacProgrammingLanguage.Commands;
 using AutofacProgrammingLanguage.Conditions;
 using AutofacProgrammingLanguage.ValueProviders;
 
@@ -29,36 +24,28 @@ namespace TestConsoleApp
             }
         }
 
-        public class WorldValueProvider : IValueProvider
+        public class AndrewProvider : IValueProvider
         {
             public string Provide()
             {
-                return " World!";
+                return "Andrew";
             }
         }
-    }
 
-    public class AndrewProvider: IValueProvider
-    {
-        public string Provide()
+        public class FailureValue : IValueProvider
         {
-            return "Andrew";
+            public string Provide()
+            {
+                return "You are not Andrew :( !";
+            }
         }
-    }
 
-    public class FailureValue : IValueProvider
-    {
-        public string Provide()
+        public class SuccessValue : IValueProvider
         {
-            return "You are not Andrew :( !";
-        }
-    }
-
-    public class SuccessValue : IValueProvider
-    {
-        public string Provide()
-        {
-            return "You are Andrew!";
+            public string Provide()
+            {
+                return "You are Andrew!";
+            }
         }
     }
 }
