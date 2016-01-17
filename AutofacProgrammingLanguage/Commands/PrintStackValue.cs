@@ -1,4 +1,4 @@
-﻿using AutofacProgrammingLanguage.ValueProviders;
+﻿using AutofacProgrammingLanguage.Conditions;
 
 namespace AutofacProgrammingLanguage.Commands
 {
@@ -6,21 +6,6 @@ namespace AutofacProgrammingLanguage.Commands
     {
         public PrintStackValue(StackValueProvider provider) : base(provider)
         {
-        }
-    }
-
-    public class StackValueProvider : IValueProvider
-    {
-        private readonly ProgramState _state;
-
-        public StackValueProvider(ProgramState state)
-        {
-            _state = state;
-        }
-
-        public string Provide()
-        {
-            return _state.PeekStack();
         }
     }
 }
