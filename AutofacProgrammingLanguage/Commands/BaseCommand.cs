@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutofacProgrammingLanguage
+namespace AutofacProgrammingLanguage.Commands
 {
-    public class Class1
+    public abstract class BaseCommand
     {
+        public abstract void Execute();
     }
 }
