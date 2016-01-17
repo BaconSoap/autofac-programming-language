@@ -2,16 +2,16 @@
 
 namespace AutofacProgrammingLanguage.Commands
 {
-    public class If<TCondition, TSuccess, TElse>: BaseCommand where TCondition: ICondition
+    public class If<TCondition, TTrue, TElse>: BaseCommand where TCondition: ICondition
     {
         private readonly TCondition _condition;
-        private readonly Lazy<TSuccess> _success;
+        private readonly Lazy<TTrue> _true;
         private readonly Lazy<TElse> _else;
 
-        public If(TCondition condition, Lazy<TSuccess> success, Lazy<TElse> @else)
+        public If(TCondition condition, Lazy<TTrue> @true, Lazy<TElse> @else)
         {
             _condition = condition;
-            _success = success;
+            _true = @true;
             _else = @else;
         }
 
@@ -19,7 +19,7 @@ namespace AutofacProgrammingLanguage.Commands
         {
             if (_condition.Evaluate())
             {
-                var _ = _success.Value;
+                var _ = _true.Value;
             }
             else
             {

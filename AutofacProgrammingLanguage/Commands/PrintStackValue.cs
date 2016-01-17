@@ -1,15 +1,15 @@
-﻿using AutofacProgrammingLanguage.LiteralProviders;
+﻿using AutofacProgrammingLanguage.ValueProviders;
 
 namespace AutofacProgrammingLanguage.Commands
 {
-    public class PrintStackValue: PrintLiteral<StackValueProvider>
+    public class PrintStackValue: PrintValue<StackValueProvider>
     {
         public PrintStackValue(StackValueProvider provider) : base(provider)
         {
         }
     }
 
-    public class StackValueProvider : ILiteralProvider
+    public class StackValueProvider : IValueProvider
     {
         private readonly ProgramState _state;
 

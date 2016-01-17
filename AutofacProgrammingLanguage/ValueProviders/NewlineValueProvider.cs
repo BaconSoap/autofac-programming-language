@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace AutofacProgrammingLanguage.LiteralProviders
+namespace AutofacProgrammingLanguage.ValueProviders
 {
-    public class NewlineLiteralProvider: ILiteralProvider
+    public class NewlineValueProvider: IValueProvider
     {
         public string Provide()
         {

@@ -1,24 +1,24 @@
 ﻿using AutofacProgrammingLanguage.Commands;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
     public class AgeProgram
     {
         public AgeProgram(
-            PrintLiteral<QuestionProvider> a,
-            PrintLiteral<NewlineLiteralProvider> f,
+            PrintValue<QuestionProvider> a,
+            PrintValue<NewlineValueProvider> f,
             ReadLine b,
-            PrintLiteral<ResponseBeginProvider> c,
+            PrintValue<ResponseBeginProvider> c,
             PrintStackValue d,
-            PrintLiteral<ResponseEndProvider> e)
+            PrintValue<ResponseEndProvider> e)
         {
             
         }
 
     }
 
-    public class ResponseEndProvider : ILiteralProvider
+    public class ResponseEndProvider : IValueProvider
     {
         public string Provide()
         {
@@ -26,7 +26,7 @@ namespace TestConsoleApp
         }
     }
 
-    public class ResponseBeginProvider : ILiteralProvider
+    public class ResponseBeginProvider : IValueProvider
     {
         public string Provide()
         {
@@ -34,7 +34,7 @@ namespace TestConsoleApp
         }
     }
 
-    public class QuestionProvider : ILiteralProvider
+    public class QuestionProvider : IValueProvider
     {
         public string Provide()
         {

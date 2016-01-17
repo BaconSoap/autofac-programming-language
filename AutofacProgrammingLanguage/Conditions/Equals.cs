@@ -1,14 +1,16 @@
 ﻿using AutofacProgrammingLanguage.Commands;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace AutofacProgrammingLanguage.Conditions
 {
-    public class Equals<TLeft, TRight> : ICondition where TLeft : ILiteralProvider where TRight : ILiteralProvider
+    public class Equals<TLeftValueProvider, TRightValueProvider> : ICondition
+        where TLeftValueProvider : IValueProvider
+        where TRightValueProvider : IValueProvider
     {
-        private readonly TLeft _left;
-        private readonly TRight _right;
+        private readonly TLeftValueProvider _left;
+        private readonly TRightValueProvider _right;
 
-        public Equals(TLeft left, TRight right)
+        public Equals(TLeftValueProvider left, TRightValueProvider right)
         {
             _left = left;
             _right = right;
@@ -20,10 +22,10 @@ namespace AutofacProgrammingLanguage.Conditions
         }
     }
 
-    public class Equals<TLeft> : Equals<TLeft, StackValueProvider> where TLeft : ILiteralProvider
+    public class Equals<TLeft> : Equals<TLeft, StackValueProvider> where TLeft : IValueProvider
     {
         public Equals(TLeft left, StackValueProvider stack) : base(left, stack)
-        {   
+        {
         }
     }
 }

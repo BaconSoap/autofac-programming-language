@@ -1,5 +1,5 @@
 ﻿using AutofacProgrammingLanguage.Commands;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace AutofacProgrammingLanguage.Conditions
 {
@@ -9,7 +9,7 @@ namespace AutofacProgrammingLanguage.Conditions
         {
         }
 
-        public class SecondStackValueProvider : ILiteralProvider
+        public class SecondStackValueProvider : IValueProvider
         {
             private readonly ProgramState _state;
 

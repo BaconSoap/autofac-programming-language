@@ -1,19 +1,19 @@
 ﻿using AutofacProgrammingLanguage.Commands;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
     public class HelloWorldProgram
     {
         public HelloWorldProgram(
-            PrintLiteral<HelloLiteralProvider> a,
-            PrintLiteral<WorldLiteralProvider> b,
-            PrintLiteral<NewlineLiteralProvider> c)
+            PrintValue<HelloValueProvider> a,
+            PrintValue<WorldValueProvider> b,
+            PrintValue<NewlineValueProvider> c)
         {
             
         }
 
-        public class HelloLiteralProvider : ILiteralProvider
+        public class HelloValueProvider : IValueProvider
         {
             public string Provide()
             {
@@ -21,7 +21,7 @@ namespace TestConsoleApp
             }
         }
 
-        public class WorldLiteralProvider : ILiteralProvider
+        public class WorldValueProvider : IValueProvider
         {
             public string Provide()
             {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace AutofacProgrammingLanguage.Commands
 {
-    public class PushLiteral<T>: BaseCommand where T: ILiteralProvider
+    public class PushValue<T>: BaseCommand where T: IValueProvider
     {
         private readonly T _provider;
         private readonly ProgramState _state;
 
-        public PushLiteral(T provider, ProgramState state)
+        public PushValue(T provider, ProgramState state)
         {
             _provider = provider;
             _state = state;

@@ -5,23 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using AutofacProgrammingLanguage.Commands;
 using AutofacProgrammingLanguage.Conditions;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
     public class IsAndrewProgram
     {
         public IsAndrewProgram(
-            PrintLiteral<NameQuestionProvider> a,
-            PrintLiteral<NewlineLiteralProvider> b,
+            PrintValue<NameQuestionProvider> a,
+            PrintValue<NewlineValueProvider> b,
             ReadLine c,
-            PushLiteral<AndrewProvider> d,
-            If<StackEquals, PrintLiteral<SuccessLiteral>, PrintLiteral<FailureLiteral>> e)
+            PushValue<AndrewProvider> d,
+            If<StackEquals, PrintValue<SuccessValue>, PrintValue<FailureValue>> e)
         {
 
         }
 
-        public class NameQuestionProvider : ILiteralProvider
+        public class NameQuestionProvider : IValueProvider
         {
             public string Provide()
             {
@@ -29,7 +29,7 @@ namespace TestConsoleApp
             }
         }
 
-        public class WorldLiteralProvider : ILiteralProvider
+        public class WorldValueProvider : IValueProvider
         {
             public string Provide()
             {
@@ -38,7 +38,7 @@ namespace TestConsoleApp
         }
     }
 
-    public class AndrewProvider: ILiteralProvider
+    public class AndrewProvider: IValueProvider
     {
         public string Provide()
         {
@@ -46,7 +46,7 @@ namespace TestConsoleApp
         }
     }
 
-    public class FailureLiteral : ILiteralProvider
+    public class FailureValue : IValueProvider
     {
         public string Provide()
         {
@@ -54,7 +54,7 @@ namespace TestConsoleApp
         }
     }
 
-    public class SuccessLiteral : ILiteralProvider
+    public class SuccessValue : IValueProvider
     {
         public string Provide()
         {

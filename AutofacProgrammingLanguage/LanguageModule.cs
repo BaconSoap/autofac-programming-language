@@ -2,7 +2,7 @@
 using System.Reflection;
 using Autofac;
 using AutofacProgrammingLanguage.Commands;
-using AutofacProgrammingLanguage.LiteralProviders;
+using AutofacProgrammingLanguage.ValueProviders;
 using Module = Autofac.Module;
 
 namespace AutofacProgrammingLanguage
@@ -22,10 +22,10 @@ namespace AutofacProgrammingLanguage
 
             builder.RegisterType<ProgramState>().AsSelf().SingleInstance();
 
-            // literals
+            // values
 
             builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => t.GetInterfaces().Contains(typeof (ILiteralProvider)))
+                .Where(t => t.GetInterfaces().Contains(typeof (IValueProvider)))
                 .AsSelf()
                 .InstancePerDependency();
 
