@@ -1,6 +1,4 @@
-﻿using AutofacProgrammingLanguage.ValueProviders;
-
-namespace AutofacProgrammingLanguage.Conditions
+﻿namespace AutofacProgrammingLanguage.ValueProviders
 {
     public class StackValueProvider : IValueProvider
     {

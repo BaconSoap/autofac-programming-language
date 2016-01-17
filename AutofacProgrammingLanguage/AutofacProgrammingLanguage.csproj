@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\PopValue.cs" />
-    <Compile Include="Conditions\StackValueProvider.cs" />
+    <Compile Include="ValueProviders\StackValueProvider.cs" />
     <Compile Include="ValueProviders\ConcatValueProvider.cs" />
     <Compile Include="Commands\If.cs" />
     <Compile Include="Commands\NoOp.cs" />
