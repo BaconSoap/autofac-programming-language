@@ -22,12 +22,35 @@ namespace AutofacProgrammingLanguage
 
             builder.RegisterType<ProgramState>().AsSelf().SingleInstance();
 
-            // values
-
             builder.RegisterAssemblyTypes(assemblies)
-                .Where(t => t.GetInterfaces().Contains(typeof (IValueProvider)))
+                .Where(t => t.GetInterfaces().Contains(typeof(IProgramBody)))
                 .AsSelf()
                 .InstancePerDependency();
+
+            // values
+
+            var genericValueProviderTypes = assemblies.SelectMany(a => a.GetTypes()
+                    .Where(t => t.IsGenericType && t.GetInterfaces().Contains(typeof(IValueProvider))));
+            var nonGenericValueProviderTypes = assemblies.SelectMany(a => a.GetTypes()
+                    .Where(t => !t.IsGenericType && t.GetInterfaces().Contains(typeof(IValueProvider))));
+
+            // generic value providers
+            foreach (var genericValueProviderType in genericValueProviderTypes)
+            {
+                builder
+                    .RegisterGeneric(genericValueProviderType)
+                    .As(genericValueProviderType)
+                    .InstancePerDependency();
+            }
+
+            // non-generic value providers
+            foreach (var nonGenericValueProviderType in nonGenericValueProviderTypes)
+            {
+                builder
+                    .RegisterType(nonGenericValueProviderType)
+                    .AsSelf()
+                    .InstancePerDependency();
+            }
 
             var genericCommandTypes = assemblies.SelectMany(a => a.GetTypes()
                     .Where(t => t.IsGenericType && typeof (BaseCommand).IsAssignableFrom(t)));

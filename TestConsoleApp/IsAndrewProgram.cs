@@ -1,17 +1,17 @@
-﻿using AutofacProgrammingLanguage.Commands;
+﻿using AutofacProgrammingLanguage;
+using AutofacProgrammingLanguage.Commands;
 using AutofacProgrammingLanguage.Conditions;
 using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
-    public class IsAndrewProgram
+    public class IsAndrewProgram: IProgramBody
     {
         public IsAndrewProgram(
-            PrintValue<NameQuestionProvider> a,
-            PrintValue<NewlineValueProvider> b,
+            PrintValueNewLine<NameQuestionProvider> a,
             ReadLine c,
             PushValue<AndrewProvider> d,
-            If<StackEquals, PrintValue<SuccessValue>, PrintValue<FailureValue>> e)
+            If<StackEquals, PrintValueNewLine<SuccessValue>, PrintValueNewLine<FailureValue>> e)
         {
 
         }

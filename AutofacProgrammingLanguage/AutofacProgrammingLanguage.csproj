@@ -53,11 +53,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\PopValue.cs" />
+    <Compile Include="ValueProviders\ConcatValueProvider.cs" />
     <Compile Include="Commands\If.cs" />
+    <Compile Include="Commands\NoOp.cs" />
+    <Compile Include="Conditions\NotEquals.cs" />
     <Compile Include="Commands\PrintStackValue.cs" />
     <Compile Include="Commands\PushValue.cs" />
     <Compile Include="Commands\ReadLine.cs" />
+    <Compile Include="Commands\While.cs" />
     <Compile Include="Conditions\Equals.cs" />
+    <Compile Include="Conditions\GreaterThan.cs" />
+    <Compile Include="Conditions\StackNotEquals.cs" />
+    <Compile Include="Conditions\StackLessThan.cs" />
+    <Compile Include="IProgramBody.cs" />
+    <Compile Include="ValueProviders\RandomValueProvider.cs" />
+    <Compile Include="ValueProviders\SecondStackValueProvider.cs" />
+    <Compile Include="Conditions\StackGreaterThan.cs" />
+    <Compile Include="Conditions\LessThan.cs" />
     <Compile Include="Conditions\StackEquals.cs" />
     <Compile Include="ValueProviders\IValueProvider.cs" />
     <Compile Include="LanguageModule.cs" />
@@ -65,6 +78,7 @@
     <Compile Include="ValueProviders\NewlineValueProvider.cs" />
     <Compile Include="ProgramState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValueProviders\ProviderExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

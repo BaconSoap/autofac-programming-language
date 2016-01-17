@@ -1,14 +1,14 @@
-﻿using AutofacProgrammingLanguage.Commands;
+﻿using AutofacProgrammingLanguage;
+using AutofacProgrammingLanguage.Commands;
 using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
-    public class HelloWorldProgram
+    public class HelloWorldProgram: IProgramBody
     {
         public HelloWorldProgram(
             PrintValue<HelloValueProvider> a,
-            PrintValue<WorldValueProvider> b,
-            PrintValue<NewlineValueProvider> c)
+            PrintValueNewLine<WorldValueProvider> b)
         {
             
         }

@@ -1,17 +1,17 @@
-﻿using AutofacProgrammingLanguage.Commands;
+﻿using AutofacProgrammingLanguage;
+using AutofacProgrammingLanguage.Commands;
 using AutofacProgrammingLanguage.ValueProviders;
 
 namespace TestConsoleApp
 {
-    public class AgeProgram
+    public class AgeProgram: IProgramBody
     {
         public AgeProgram(
-            PrintValue<QuestionProvider> a,
-            PrintValue<NewlineValueProvider> f,
+            PrintValueNewLine<QuestionProvider> a,
             ReadLine b,
             PrintValue<ResponseBeginProvider> c,
             PrintStackValue d,
-            PrintValue<ResponseEndProvider> e)
+            PrintValueNewLine<ResponseEndProvider> e)
         {
             
         }

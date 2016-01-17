@@ -17,4 +17,12 @@ namespace AutofacProgrammingLanguage.Commands
             Console.Write(_provider.Provide());
         }
     }
+
+    public class PrintValueNewLine<TValueProvider>: PrintValue<ConcatValueProvider<TValueProvider, NewlineValueProvider>>
+        where TValueProvider : IValueProvider
+    {
+        public PrintValueNewLine(ConcatValueProvider<TValueProvider, NewlineValueProvider> provider) : base(provider)
+        {
+        }
+    }
 }

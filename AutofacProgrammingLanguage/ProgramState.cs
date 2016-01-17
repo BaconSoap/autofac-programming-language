@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AutofacProgrammingLanguage
 {
@@ -18,11 +19,19 @@ namespace AutofacProgrammingLanguage
 
         public string PeekStack()
         {
+            if (_stack.Count == 0)
+            {
+                return Guid.NewGuid().ToString();
+            }
             return _stack.Peek();
         }
 
         public string PopStack()
         {
+            if (_stack.Count == 0)
+            {
+                return Guid.NewGuid().ToString();
+            }
             return _stack.Pop();
         }
     }

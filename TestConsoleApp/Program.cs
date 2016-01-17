@@ -10,9 +10,6 @@ namespace TestConsoleApp
         {
             var builder = new ContainerBuilder();
             builder.RegisterModule(new LanguageModule(typeof (Program).Assembly));
-            builder.RegisterType<HelloWorldProgram>().AsSelf().InstancePerDependency();
-            builder.RegisterType<AgeProgram>().AsSelf().InstancePerDependency();
-            builder.RegisterType<IsAndrewProgram>().AsSelf().InstancePerDependency();
             var container = builder.Build();
 
             // good practice to never resolve from root container!
@@ -20,6 +17,7 @@ namespace TestConsoleApp
             programLifetimeScope.Resolve<HelloWorldProgram>();
             programLifetimeScope.Resolve<AgeProgram>();
             programLifetimeScope.Resolve<IsAndrewProgram>();
+            programLifetimeScope.Resolve<OverUnderProgram>();
 
             Console.ReadKey();
         }
