@@ -25,10 +25,26 @@ namespace AutofacProgrammingLanguage
                 .AsSelf()
                 .InstancePerDependency();
 
-            builder
-                .RegisterGeneric(typeof(PrintLiteral<>))
-                .As(typeof(PrintLiteral<>)).InstancePerDependency()
-                .OnActivated(activated => (activated.Instance as BaseCommand).Execute());
+            var genericCommandTypes = new[] {typeof (PrintLiteral<>)};
+
+            foreach (var genericCommandType in genericCommandTypes)
+            {
+                builder
+                    .RegisterGeneric(genericCommandType)
+                    .As(genericCommandType).InstancePerDependency()
+                    .OnActivated(activated => ((BaseCommand) activated.Instance).Execute());
+            }
+
+            var nonGenericCommandTypes = new[] {typeof (ReadLine), typeof (PrintStackValue)};
+            foreach (var nonGenericCommandType in nonGenericCommandTypes)
+            {
+                builder
+                    .RegisterType(nonGenericCommandType)
+                    .AsSelf()
+                    .InstancePerDependency()
+                    .OnActivated(activated => ((BaseCommand) activated.Instance).Execute());
+            }
+
         }
     }
 }

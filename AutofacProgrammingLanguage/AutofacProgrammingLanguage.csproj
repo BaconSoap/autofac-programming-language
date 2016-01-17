@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\PrintStackValue.cs" />
+    <Compile Include="Commands\ReadLine.cs" />
     <Compile Include="LiteralProviders\ILiteralProvider.cs" />
     <Compile Include="LanguageModule.cs" />
     <Compile Include="Commands\PrintLiteral.cs" />
