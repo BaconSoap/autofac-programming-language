@@ -49,6 +49,21 @@ AFPL has the following built-in conditionals:
 - `LessThan<TLeftValueProvider>`: `true` if the value provided by `TLeftValueProvider` is less than to the top value of the program stack
 - `StackLessThan`: `true` if the top value of the program stack is less than the second-to-top value of the program stack
 
+## `WithValueAttribute` usage
+
+Creating a new class for every instance of printing a string is enterprise and good for testability, but there have been complaints of it being overly tedious. To alleviate this, the attribute `WithValueAttribute` can be used for `PrintValue` and `PrintValueNewline`. Simple omit the generic type specification and add the `WithValue` attribute before the parameter, supplying the string you wish to use.
+
+Example:
+
+```cs
+public HelloWorldProgram: IProgramBody
+{
+    public HellowWorldProgram(
+        [WithValue("Hello World!")]PrintValue line1 //prints "Hello World!"
+    ) {}
+}
+```
+
 ## Examples
 
 See [IsAndrewProgram.cs](TestConsoleApp/IsAndrewProgram.cs) for an example of a program, or [OverUnderProgram](TestConsoleApp/OverUnderProgram.cs) for a full-fledged number guessing game.

@@ -97,6 +97,8 @@ namespace AutofacProgrammingLanguage
                     .As(nonGenericConditionType)
                     .InstancePerDependency();
             }
+
+            builder.RegisterModule<WithValueAttributeModule>();
         }
     }
 }

@@ -7,8 +7,8 @@ namespace TestConsoleApp
     public class HelloWorldProgram: IProgramBody
     {
         public HelloWorldProgram(
-            PrintValue<HelloValueProvider> a,
-            PrintValueNewLine<WorldValueProvider> b)
+            [WithValue("Hello")]PrintValue a,
+            [WithValue(" world!")]PrintValueNewLine b)
         {
             
         }
