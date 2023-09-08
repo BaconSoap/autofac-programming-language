@@ -56,10 +56,3 @@ See [IsAndrewProgram.cs](TestConsoleApp/IsAndrewProgram.cs) for an example of a 
 ## But why?
 
 Why not?
-
-## Accolades, quotes, etc.
-
-- "I need an adult"
-- "You were so preoccupied with whether or not you could that you didn't stop to think if you should"
-- "Dear god, why?"
-- "Whoever write this should be killed on the spot"
